@@ -7,9 +7,17 @@ import ReduxThunk from 'redux-thunk';
 
 import NavContainer from './navigation/NavigationContainer';
 import authReducer from './store/reducers/auth';
+import productsReducer from './store/reducers/products';
+import cartReducer from './store/reducers/cart';
+import ordersReducer from './store/reducers/order';
+
+export type RootState = ReturnType<typeof rootReducer>;
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  products: productsReducer,
+  cart: cartReducer,
+  orders: ordersReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
