@@ -3,7 +3,14 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 
 import Card from '../UI/Card';
 
-const ProductItem = (props: any) => {
+type productItemProp = {
+  image: string;
+  name: string;
+  price: number;
+  children: React.ReactNode;
+};
+
+const ProductItem = (props: productItemProp) => {
   return (
     <Card style={styles.product}>
       <View style={styles.touchable}>
@@ -12,8 +19,8 @@ const ProductItem = (props: any) => {
             <Image style={styles.image} source={{ uri: props.image }} />
           </View>
           <View style={styles.details}>
-            <Text style={styles.title}>{props.title}</Text>
-            <Text style={styles.price}>${props.price.toFixed(2)}</Text>
+            <Text style={styles.name}>{props.name}</Text>
+            <Text style={styles.price}>₦{props.price.toFixed(2)}</Text>
           </View>
           <View style={styles.actions}>{props.children}</View>
         </View>
@@ -47,7 +54,7 @@ const styles = StyleSheet.create({
     height: '17%',
     padding: 10,
   },
-  title: {
+  name: {
     fontFamily: 'open-sans-bold',
     fontSize: 18,
     marginVertical: 2,
